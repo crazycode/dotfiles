@@ -4,8 +4,10 @@ gem: --no-ri --no-rdoc
 :benchmark: false
 :backtrace: false
 :verbose: true
+:ssl_verify_mode: false
 :update_sources: true
 :sources:
+- http://ruby.taobao.org
 - http://gems.rubyforge.org
 - http://gems.github.com
 rdoc: --inline-source --line-numbers --format=html --template=hanna

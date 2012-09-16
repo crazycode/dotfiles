@@ -35,3 +35,6 @@ plugins=(ant autojump brew cap gem git git-flow mvn osx rails3 rake ruby rvm svn
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
+export PLAY_HOME=$HOME/opt/play-1.2.4
+export PATH=$HOME/bin:$PATH:$HOME/opt/play-1.2.4

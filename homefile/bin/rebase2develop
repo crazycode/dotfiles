@@ -1,0 +1,16 @@
+#!/bin/bash
+CUR_BR=`git branch | grep "*"  | awk '{ print $2 }'`
+echo "Current Branch: $CUR_BR"
+git fetch upstream
+git checkout develop
+git rebase upstream/develop
+
+REMOTE=$1
+REMOTE_BR=$2
+
+echo "update $REMOTE ..."
+git fetch $REMOTE
+git checkout -b $REMOTE-$REMOTE_BR $REMOTE/$REMOTE_BR
+
+echo "rebase develop ..."
+git rebase develop

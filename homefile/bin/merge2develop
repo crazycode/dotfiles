@@ -1,0 +1,7 @@
+#!/bin/bash
+REMOTE=$1 
+REMOTE_BR=$2 
+git fetch $REMOTE 
+git checkout -b $REMOTE-$REMOTE_BR $REMOTE/$REMOTE_BR 
+
+git pull --rebase upstream develop && git push upstream HEAD:develop && git checkout develop && git branch -D $REMOTE-$REMOTE_BR

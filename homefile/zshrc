@@ -30,7 +30,7 @@ ZSH_THEME="risto"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap gem git git-flow mvn osx rails3 rake ruby rvm svn bundler)
+plugins=(ant autojump brew cap gem gitfast git-flow github history-substring-search mvn osx rails3 rake ruby rvm svn bundler)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -3,3 +3,4 @@ git fetch upstream
 git checkout develop
 git rebase upstream/develop
 git push origin develop
+git fetch upstream

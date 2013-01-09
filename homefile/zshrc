@@ -37,6 +37,6 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export PLAY_HOME=$HOME/opt/play-1.2.4
-export PATH=$HOME/bin:$PATH:$HOME/opt/play-1.2.4
+export PATH=$HOME/bin:$PATH:$HOME/opt/play-1.2.4:$HOME/opt/android-sdk-macosx/tools
 
 export RSENSE_HOME=/Users/tanglq/opt/rsense-0.3

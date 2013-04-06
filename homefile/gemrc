@@ -8,6 +8,7 @@ gem: --no-ri --no-rdoc
 :update_sources: true
 :sources:
 - http://ruby.taobao.org
+- http://rubygems.org
 - http://gems.rubyforge.org
 - http://gems.github.com
 rdoc: --inline-source --line-numbers --format=html --template=hanna

@@ -30,13 +30,14 @@ ZSH_THEME="risto"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap gem gitfast git-flow github history-substring-search mvn osx rails3 rake ruby rvm svn bundler)
+plugins=(ant autojump brew cap coffee gem gitfast git-flow github golang history-substring-search mvn osx rails3 rake ruby rvm rsync sbt svn scala bundler)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
 export PLAY_HOME=$HOME/opt/play-1.2.4
-export PATH=$HOME/bin:$PATH:$HOME/opt/play-1.2.4:$HOME/opt/android-sdk-macosx/tools
+export PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.4:$HOME/opt/play-2.1.0:$HOME/opt/android-sdk-macosx/tools:/usr/local/sbin:$HOME/.cabal/bin
 
+export JAVA_OPTS="-server -XX:PermSize=128M -XX:MaxPermSize=256m"
 export RSENSE_HOME=/Users/tanglq/opt/rsense-0.3

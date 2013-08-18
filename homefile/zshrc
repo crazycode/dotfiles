@@ -12,6 +12,8 @@ ZSH_THEME="risto"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias gs="stree"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -32,18 +34,24 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(ant autojump brew cap coffee gem gitfast git-flow github golang history-substring-search mvn osx rails3 rake ruby rvm rsync sbt svn scala bundler)
 
+source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-
 export PLAY_HOME=$HOME/opt/play-1.2.4
 
+export ANDROID_HOME=$HOME/opt/android-sdk-macosx
 # please run "brew install coreutils" first.
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.4:$HOME/opt/play-2.1.1:$HOME/opt/android-sdk-macosx/tools:/usr/local/sbin:$HOME/.cabal/bin
+
+export MULE_HOME=$HOME/opt/mule-standalone-3.4.0
+export PATH=$PATH:$MULE_HOME/bin
+
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.4:$HOME/opt/play-2.1.1:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_06.jdk/Contents/Home
 export JAVA_OPTS="-server -XX:PermSize=64M -XX:MaxPermSize=256m"
-export RSENSE_HOME=/Users/tanglq/opt/rsense-0.3
+export RSENSE_HOME=$HOME/opt/rsense-0.3
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "/Users/tanglq/.jenv/bin/jenv-init.sh" ]] && source "/Users/tanglq/.jenv/bin/jenv-init.sh"
+[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh"

@@ -1,8 +1,22 @@
 #!/bin/bash
+
 CUR_BR=`git branch | grep "*"  | awk '{ print $2 }'`
 echo "Current Branch: $CUR_BR"
-git fetch upstream
-git checkout master
-git rebase upstream/master
-git push origin master
-git checkout $CUR_BR
+
+if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
+then
+    echo "PLEASE COMMIT YOUR CHANGE FIRST!!!"
+    exit 1
+fi
+
+git fetch
+git merge origin/master
+
+
+if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
+then
+    echo "PLEASE COMMIT YOUR CHANGE FIRST!!!"
+    exit 1
+fi
+
+git push 

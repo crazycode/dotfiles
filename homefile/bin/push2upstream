@@ -1,25 +1,28 @@
 #!/bin/bash
+
 CUR_BR=`git branch | grep "*"  | awk '{ print $2 }'`
 echo "Current Branch: $CUR_BR"
 
 if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
 then
-    echo "PLEASE COMMIT YOUR CHANGE FIRST: $CUR_BR"
+    echo "PLEASE COMMIT YOUR CHANGE FIRST!!!"
     exit 1
 else
-    echo "The branch $CUR_BR is Clean."
+    echo "It's Clean."
+    exit 0
 fi
 
-git fetch origin
-git checkout develop
-git rebase origin/develop
+git fetch upstream
+git merge upstream/master
 
 
 if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
 then
-    echo "PLEASE CHECT THE REBASE FIRST: $CUR_BR"
+    echo "PLEASE COMMIT YOUR CHANGE FIRST!!!"
     exit 1
+else
+    echo "It's Clean."
+    exit 0
 fi
 
-git push origin develop
-git fetch origin
+git push upstream

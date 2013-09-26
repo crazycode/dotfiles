@@ -32,7 +32,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github golang history-substring-search mvn osx rails3 rake ruby rvm rsync screen tmux sbt svn scala bundler)
+plugins=(ant autojump brew cap coffee gem git git-flow github golang history-substring-search mvn osx rails3 rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler)
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
@@ -43,10 +43,13 @@ export PLAY_HOME=$HOME/opt/play-1.2.6
 export ANDROID_HOME=$HOME/opt/android-sdk-macosx
 # please run "brew install coreutils" first.
 
+export EDITOR=vi
+export VISUAL=vi
+
 export MULE_HOME=$HOME/opt/mule-standalone-3.4.0
 export PATH=$PATH:$MULE_HOME/bin
 
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.1.1:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.2.0:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_06.jdk/Contents/Home

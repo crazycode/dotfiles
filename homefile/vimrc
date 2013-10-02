@@ -61,13 +61,13 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
  
 set ruler           " 显示当前光标位置的行号和列号，用逗号分割
  
-" colorscheme grb256  " 设置终端下的风格
+colorscheme grb256  " 设置终端下的风格
 hi LineNr ctermfg=darkgray
 set background=dark " 当设置为 "dark" 时，Vim 会尝试使用在暗色背景中合适的颜色。
                     " 当设置为 "light" 时，Vim 会尝试使用在亮色背景中合适的颜色。
                     " 其他值是非法的
  
-set mouse=a         " 启用鼠标的使用
+"set mouse=a         " 启用鼠标的使用
 
 :nmap <C-N><C-N> :set invnumber<CR> " 开关行号显示
  

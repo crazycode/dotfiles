@@ -32,7 +32,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github golang history-substring-search mvn osx rails3 rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails3 rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler)
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
@@ -49,7 +49,8 @@ export VISUAL=vi
 export MULE_HOME=$HOME/opt/mule-standalone-3.4.0
 export PATH=$PATH:$MULE_HOME/bin
 
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.2.0:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
+export GRADLE_HOME=$HOME/opt/gradle-1.8
+export PATH=$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.2.0:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_06.jdk/Contents/Home
@@ -57,4 +58,4 @@ export JAVA_OPTS="-server -XX:PermSize=64M -XX:MaxPermSize=256m"
 export RSENSE_HOME=$HOME/opt/rsense-0.3
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh"
+#[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh"

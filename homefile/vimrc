@@ -70,6 +70,7 @@ set background=dark " 当设置为 "dark" 时，Vim 会尝试使用在暗色背�
 "set mouse=a         " 启用鼠标的使用
 
 :nmap <C-N><C-N> :set invnumber<CR> " 开关行号显示
+set pastetoggle=<F11>
  
 filetype plugin indent on
 syntax on

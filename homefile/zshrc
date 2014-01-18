@@ -49,13 +49,20 @@ export VISUAL=vi
 export MULE_HOME=$HOME/opt/mule-standalone-3.4.0
 export PATH=$PATH:$MULE_HOME/bin
 
-export GRADLE_HOME=$HOME/opt/gradle-1.8
-export PATH=$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.2.0:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/share/python
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+#export GRADLE_HOME=$HOME/opt/gradle-1.8
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$HOME/opt/play-1.2.6:$HOME/opt/play-2.2.0:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_06.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
 export JAVA_OPTS="-server -XX:PermSize=64M -XX:MaxPermSize=256m"
 export RSENSE_HOME=$HOME/opt/rsense-0.3
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 #[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh"
+#
+
+# fix git svn issue.
+export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/darwin-thread-multi-2level"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

@@ -1,2 +1,2 @@
 #!/bin/bash
-ack TODO  --ignore-dir=vendor --ignore-dir=public -a --after-context=1      
+ack TODO  --ignore-dir=vendor --ignore-dir=public --after-context=1      

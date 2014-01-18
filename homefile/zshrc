@@ -32,7 +32,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails3 rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler)
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
@@ -65,4 +65,4 @@ export RSENSE_HOME=$HOME/opt/rsense-0.3
 # fix git svn issue.
 export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/darwin-thread-multi-2level"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -35,7 +35,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -57,7 +57,7 @@ export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
-export JAVA_OPTS="-server -XX:PermSize=64M -XX:MaxPermSize=256m"
+export JAVA_OPTS="-server -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=256m"
 export RSENSE_HOME=$HOME/opt/rsense-0.3
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!

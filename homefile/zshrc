@@ -35,9 +35,11 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker)
 
 source $ZSH/oh-my-zsh.sh
+
+alias v=vagrant
 
 # Customize to your needs...
 export PLAY_HOME=$HOME/opt/play-1.2.6
@@ -67,5 +69,8 @@ export RSENSE_HOME=$HOME/opt/rsense-0.3
 # fix git svn issue.
 export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/darwin-thread-multi-2level"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# for docker
+export DOCKER_HOST=tcp://127.0.0.1:4243
+
+PATH=$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 

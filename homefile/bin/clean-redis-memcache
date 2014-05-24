@@ -1,0 +1,4 @@
+#!/bin/bash
+launchctl stop homebrew.mxcl.memcached
+launchctl start homebrew.mxcl.memcached
+redis-cli flushdb

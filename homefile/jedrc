@@ -1,0 +1,16 @@
+WRAP_INDENTS = 1;
+USE_TABS = 0;
+TAB_DEFAULT = 4;
+C_INDENT = 4;
+C_BRA_NEWLINE = 0;
+C_CONTINUED_OFFSET = 4;
+C_BRACE = 0;
+C_Colon_Offset = 0;
+BLINK           = 1;    % if non zero, blink matching parenthesis
+WRAP            = 78;   % wrap column
+ADD_NEWLINE     = 1;    % add newline to file when writing if one not present
+CASE_SEARCH     = 1;    % zero turns off case sensitivity for
+                    % search functions, non-zero turns it on
+set_color_scheme ("black3");
+
+enable_top_status_line(0);

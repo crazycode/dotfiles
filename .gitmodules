@@ -1,3 +1,6 @@
 [submodule "homefile/oh-my-zsh"]
 	path = homefile/oh-my-zsh
 	url = git://github.com/crazycode/oh-my-zsh.git
+[submodule "homefile/oh-my-fish"]
+	path = homefile/oh-my-fish
+	url = git://github.com/bpinto/oh-my-fish.git

@@ -1,0 +1,4 @@
+#!/bin/bash
+PORT=$1
+VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port$PORT,tcp,,$PORT,,$PORT";
+VBoxManage modifyvm "boot2docker-vm" --natpf1 "udp-port$PORT,udp,,$PORT,,$PORT";

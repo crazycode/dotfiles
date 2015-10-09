@@ -1,0 +1,2 @@
+#!/bin/sh
+java $CONSCRIPT_OPTS -Xmx1G -jar /Users/tanglq/.conscript/sbt-launch.jar @/Users/tanglq/.conscript/tototoshi/mvnsearch/mvnsearch/launchconfig "$@"

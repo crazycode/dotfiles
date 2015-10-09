@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function check_dirty() {
+    if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
+    then
+        echo "当前分支有未提交内容，请先检查并提交！"
+        exit 1
+    fi
+}
+
+echo "ldeploy: 切换到local分支，rebase master，然后执行指定命令"
+CUR_BR=`git branch | grep "*"  | awk '{ print $2 }'`
+
+check_dirty
+
+git checkout local
+git rebase master
+
+check_dirty

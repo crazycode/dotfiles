@@ -1,3 +1,3 @@
 #!/bin/bash
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 export PATH=$JAVA_HOME/bin:$PATH

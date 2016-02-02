@@ -1,6 +1,7 @@
 #!/bin/bash
+# 更新当前目录之下的所有svn和git库，拉取远端库变更.
 
-# 更新所有svn
+# 更新所有svn, 建议升级到svn 1.8后使用，1.8以下.svn目录有重复.
 ALL_DOT_SVN=$(find `pwd` -name .svn -type d)
 
 for DOT_SVN in $ALL_DOT_SVN; do
@@ -16,6 +17,7 @@ for DOT_GIT in $ALL_DOT_GIT; do
   gitdir=`dirname $DOT_GIT`
   echo "git: $gitdir"
   cd $gitdir
+  # 检查是不是git svn
   if [ -d $gitdir/.git/svn/refs ]; then
       echo " -----> it's git svn"
       if  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
@@ -25,14 +27,9 @@ for DOT_GIT in $ALL_DOT_GIT; do
       fi
       git svn rebase
   else
+      # 只做fetch，以避免破坏
       echo " #####> it's git root"
       git fetch
   fi
-  # 检查是不是git svn
 done
 
-# 检查svn版本
-#$ ls .svn  v1.8.x
-#entries  format  pristine  tmp  wc.db
-#$ ls src/.svn  v1.7
-#all-wcprops  entries  prop-base  props  text-base  tmp

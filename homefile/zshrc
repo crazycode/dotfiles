@@ -39,7 +39,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,13 +54,9 @@ export ANDROID_HOME=$HOME/opt/android-sdk-macosx
 export EDITOR="/usr/bin/emacs -q"
 export VISUAL="/usr/bin/emacs -q"
 
-export MULE_HOME=$HOME/opt/mule-standalone-3.4.0
-export PATH=$PATH:$MULE_HOME/bin
-
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
-export GRAILS_HOME=$HOME/opt/grails-3.0.2
 #export GRADLE_HOME=$HOME/opt/gradle-1.8
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$HOME/opt/activator-1.2.10:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:$GRAILS_HOME/bin
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:$GRAILS_HOME/bin
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)

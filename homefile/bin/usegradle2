@@ -1,0 +1,4 @@
+#!/bin/bash
+export GRADLE_HOME=$HOME/opt/gradle-2.14.1
+export PATH=$GRADLE_HOME/bin:$PATH
+

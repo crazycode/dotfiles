@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+puts Array.new(10) { rand(36..1295).to_s(36) }.join

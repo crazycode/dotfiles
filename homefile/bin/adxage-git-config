@@ -1,0 +1,5 @@
+#!/bin/bash
+git config --local user.name "tangliqun"
+git config --local user.email "lqtang@adxage.com"
+
+git config --list --local

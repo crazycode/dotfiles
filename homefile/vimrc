@@ -46,7 +46,9 @@ set autoindent      " 当开始新行时复制当前行的缩进
 set textwidth=79    " Maximum width of text that is being inserted. A longer
                     " line will be broken after white space to get this width.
  
-set formatoptions=c,q,r,t " This is a sequence of letters which describes how
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set formatoptions-=cro
+"set formatoptions=c,q,r,t " This is a sequence of letters which describes how
                     " automatic formatting is to be done.
                     "
                     " letter    meaning when present in 'formatoptions'

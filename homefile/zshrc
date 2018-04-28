@@ -17,6 +17,8 @@ ZSH_THEME="crazycode"
 
 alias gs="stree"
 
+alias o="open"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -45,6 +47,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias v=vagrant
 
+alias setup-http-proxy='source ~/bin/http-proxy'
+
 # Customize to your needs...
 export PLAY_HOME=$HOME/opt/play-1.4.4
 #export PLAY_HOME=$HOME/opt/play-1.3.2
@@ -58,7 +62,7 @@ export VISUAL="/usr/bin/emacs -q"
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
 export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
-export PATH=$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:$GRAILS_HOME/bin
+export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:$GRAILS_HOME/bin:/usr/local/opt/go/libexec/bin
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 

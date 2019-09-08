@@ -62,11 +62,13 @@ export VISUAL="/usr/bin/emacs -q"
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
 export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
-export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:$GRAILS_HOME/bin:/usr/local/opt/go/libexec/bin
+export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 
+# use jenv, NO JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+#
 #export JAVA_OPTS="-server -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=256m"
 export JAVA_OPTS="-server -Xmx1024m"
 
@@ -85,11 +87,24 @@ then
     eval "$(docker-machine env default)"
 fi
 
-PATH=$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
-# 设置当前ruby版本，用于Gemfile选择当前版本
-RUBY_VERSION=2.3.1
+#PATH=/usr/local/mysql/bin:$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
+PATH=$HOME/.jenv/bin:/usr/local/mysql/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
+eval "$(jenv init -)"
 
-#export NVM_DIR="/Users/tanglq/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# 设置当前ruby版本，用于Gemfile选择当前版本
+RUBY_VERSION=2.6.1
+
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export PATH=$PATH:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc

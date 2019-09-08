@@ -1,2 +1,4 @@
-export http_proxy=http://116.228.99.244:8128
-export https_proxy=http://116.228.99.244:8128
+#export http_proxy=http://116.228.99.244:8128
+#export https_proxy=http://116.228.99.244:8128
+export http_proxy=http://127.0,0.1:45678
+export https_proxy=http://127.0.0.1:45678

@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "/Users/tanglq/opt/apache-jmeter-5.1.1/bin/jmeter" "$@" &

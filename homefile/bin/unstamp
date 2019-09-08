@@ -1,0 +1,3 @@
+#!/bin/bash
+java -jar /Users/tanglq/bin/pdf-unstamper.jar "$@"
+

@@ -10,6 +10,8 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="rkj-repos"
 #ZSH_THEME="wedisagree"
 ZSH_THEME="crazycode"
+#ZSH_THEME="fast"
+
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -18,6 +20,12 @@ ZSH_THEME="crazycode"
 alias gs="stree"
 
 alias o="open"
+
+# git
+alias co="git co"
+alias merge="git merge"
+alias pull="git pull"
+alias push="git push"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -28,6 +36,33 @@ export COPYFILE_DISABLE=true
 
 # Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
+
+
+function lazy_load() {
+    local load_func=${1}
+    local lazy_func="lazy_${load_func}"
+
+    shift
+    for i in ${@}; do
+        alias ${i}="${lazy_func} ${i}"
+    done
+
+    eval "
+    function ${lazy_func}() {
+        unset -f ${lazy_func}
+        lazy_load_clean $@
+        eval ${load_func}
+        unset -f ${load_func}
+        eval \$@
+    }
+    "
+}
+
+function lazy_load_clean() {
+    for i in ${@}; do
+        unalias ${i}
+    done
+}
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -41,7 +76,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use)
+plugins=(ant autojump brew cap coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -55,26 +90,24 @@ export PLAY_HOME=$HOME/opt/play-1.4.4
 
 export ANDROID_HOME=$HOME/opt/android-sdk-macosx
 # please run "brew install coreutils" first.
+# brew --prefix coreutils => /usr/local/opt/coreutils
 
-export EDITOR="/usr/bin/emacs -q"
-export VISUAL="/usr/bin/emacs -q"
+export EDITOR="emacs -q"
+export VISUAL="emacs -q"
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
 export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
-export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
-export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
-# use jenv, NO JAVA_HOME
+# use JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 #
 #export JAVA_OPTS="-server -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=256m"
 export JAVA_OPTS="-server -Xmx1024m"
 
-#THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-#[[ -s "$HOME/.jenv/bin/jenv-init.sh" ]] && source "$HOME/.jenv/bin/jenv-init.sh"
-#
 
 # fix git svn issue.
 export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/darwin-thread-multi-2level"
@@ -82,14 +115,16 @@ export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/da
 export GOPATH=$HOME/opt/go
 
 # for docker
-if [[ "$(docker-machine status default)" == "Running" ]] 
-then
-    eval "$(docker-machine env default)"
-fi
+function load_docker() {
+  if [[ "$(docker-machine status default)" == "Running" ]]
+  then
+      eval "$(docker-machine env default)"
+  fi
+}
+lazy_load load_docker docker docker-compose
 
 #PATH=/usr/local/mysql/bin:$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
-PATH=$HOME/.jenv/bin:/usr/local/mysql/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
-eval "$(jenv init -)"
+#PATH=/usr/local/mysql/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
 
 # 设置当前ruby版本，用于Gemfile选择当前版本
 RUBY_VERSION=2.6.1
@@ -98,13 +133,29 @@ RUBY_VERSION=2.6.1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PATH=$PATH:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook
+export PATH=$PATH:/Users/tanglq/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function load_nvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+lazy_load load_nvm nvm
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/mc mc
+
+
+function load_rvm() {
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+}
+lazy_load load_rvm rvm ruby rails rake rdoc ri bundle bi bu
+
+export SDKMAN_DIR="/Users/tanglq/.sdkman"
+function load_sdkman() {
+  #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+  [[ -s "/Users/tanglq/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tanglq/.sdkman/bin/sdkman-init.sh"
+}
+lazy_load load_sdkman sdk

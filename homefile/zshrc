@@ -76,7 +76,7 @@ function lazy_load_clean() {
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew capistrano coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
+plugins=(ant autojump brew capistrano coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx pip pipenv rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,6 +84,8 @@ alias v=vagrant
 
 alias setup-http-proxy='source ~/bin/http-proxy'
 
+alias tmux='direnv exec / tmux'
+eval "$(direnv hook zsh)"
 # Customize to your needs...
 export PLAY_HOME=$HOME/opt/play-1.4.4
 #export PLAY_HOME=$HOME/opt/play-1.3.2
@@ -92,13 +94,16 @@ export ANDROID_HOME=$HOME/opt/android-sdk-macosx
 # please run "brew install coreutils" first.
 # brew --prefix coreutils => /usr/local/opt/coreutils
 
-export EDITOR="emacs -q"
-export VISUAL="emacs -q"
+#export EDITOR="emacs -q"
+#export VISUAL="emacs -q"
+export EDITOR="vi"
+export VISUAL="vi"
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
 export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
-export PATH=/usr/local/opt/python@2/libexec/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
+#export PATH=/usr/local/opt/python@2/libexec/bin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
+export PATH=/usr/local/mysql/bin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
@@ -115,13 +120,13 @@ export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/da
 export GOPATH=$HOME/opt/go
 
 # for docker
-function load_docker() {
-  if [[ "$(docker-machine status default)" == "Running" ]]
-  then
-      eval "$(docker-machine env default)"
-  fi
-}
-lazy_load load_docker docker docker-compose
+#function load_docker() {
+#  if [[ "$(docker-machine status default)" == "Running" ]]
+#  then
+#      eval "$(docker-machine env default)"
+#  fi
+#}
+#lazy_load load_docker docker docker-compose
 
 #PATH=/usr/local/mysql/bin:$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
 #PATH=/usr/local/mysql/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
@@ -140,11 +145,14 @@ export PATH=$PATH:$HOME/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/loca
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/mc mc
 
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+
 # Lazyload NVM
 export NVM_DIR="$HOME/.nvm"
 function load_nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  #export PATH=$HOME/.nvm/versions/node/v10.15.3/bin:$PATH
 }
 lazy_load load_nvm nvm node npm yarn
 

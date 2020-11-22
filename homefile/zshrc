@@ -27,6 +27,8 @@ alias merge="git merge"
 alias pull="git pull"
 alias push="git push"
 
+alias service="brew services"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -76,7 +78,7 @@ function lazy_load_clean() {
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew capistrano coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx pip pipenv rails rake ruby rvm rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
+plugins=(ant autojump brew capistrano coffee gem git git-flow github gradle golang gnu-utils history-substring-search mvn osx pip pipenv rails rake ruby rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -145,7 +147,7 @@ export PATH=$PATH:$HOME/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/loca
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/mc mc
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 
 # Lazyload NVM
 export NVM_DIR="$HOME/.nvm"
@@ -154,18 +156,18 @@ function load_nvm() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   #export PATH=$HOME/.nvm/versions/node/v10.15.3/bin:$PATH
 }
-lazy_load load_nvm nvm node npm yarn
+lazy_load load_nvm nvm node npm yarn sshync
 
 # lazyload rvm
-function load_rvm() {
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-}
-lazy_load load_rvm rvm ruby rails rake rdoc ri bundle bi bu
+# function load_rvm() {
+#   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# }
+# lazy_load load_rvm rvm ruby rails rake rdoc ri bundle bi bu cheat gem
 
 # lazyload sdkman
-export SDKMAN_DIR="$HOME/.sdkman"
-function load_sdkman() {
+#export SDKMAN_DIR="$HOME/.sdkman"
+#function load_sdkman() {
   #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-}
-lazy_load load_sdkman sdk java javac gradle scala sbt mvn
+#  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+#}
+#lazy_load load_sdkman sdk java javac gradle scala sbt mvn

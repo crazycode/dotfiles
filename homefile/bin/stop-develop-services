@@ -1,0 +1,9 @@
+#!/bin/bash
+brew services stop redis
+brew services stop memcached
+brew services stop mailhog
+brew services stop influxdb
+brew services stop nginx
+
+echo "已经关闭 redis / memcached / mailhog / influxdb / nginx"
+echo "MySQL请通过系统控制面板关闭"

@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+cd /Users/tanglq/itdone/omnifocus/jira-omnifocus
+
+if [[ -v rvm_bin_path ]]; then
+        echo $PATH >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+else	
+	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+echo $HOME >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+pwd >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+
+date >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+
+echo "sync start ---" >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+
+#bundle exec bin/jiraomnifocus.rb >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+ruby bin/jiraomnifocus.rb >> /opt/logs/omnifocus/jira-omnifocus-sync.log
+
+echo "sync end ---" >> /opt/logs/omnifocus/jira-omnifocus-sync.log

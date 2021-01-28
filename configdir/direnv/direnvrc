@@ -1,3 +1,8 @@
+# --------------------- for python 3 ------------------------
+# Sample .envrc
+# export VIRTUAL_ENV=.venv
+# layout python-venv python3
+
 realpath() {
 	[[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
@@ -25,3 +30,61 @@ layout_python-venv() {
 	PATH="${VIRTUAL_ENV}/bin:${PATH}"
 	export PATH
 }
+
+# ------------------- for ruby -----------------------
+# Sample .envrc
+# use ruby 2.4.4
+# layout ruby
+# bundle_check
+
+use_ruby() {
+    RUBY_VERSION="$1"
+
+    RUBIES_DIR="$HOME/.rubies"
+    RUBY_PREFIX="$RUBIES_DIR/ruby-$RUBY_VERSION"
+    if [ -s "$RUBY_PREFIX" ]; then
+        load_prefix "$RUBY_PREFIX"
+        layout_ruby
+    else
+        tput setaf 1
+        echo "Ruby $RUBY_VERSION not available; using default"
+        echo "See http://blog.differentpla.net/blog/2019/01/30/ruby-install/"
+        tput sgr0
+    fi
+}
+
+
+bundle_check() {
+    # This has to come after 'layout ruby'
+    if [ -f Gemfile ]; then
+        gem list -i '^bundler$' >/dev/null || \
+            gem install --no-ri --no-rdoc bundler && \
+            bundle check
+    fi
+}
+
+# ------------------ for nvm -------------------
+
+
+# ------------------ for go -------------------
+# Usage: layout golang
+#
+# Sets up environment for a Go project using the alternative gb build tool. Also
+# works with the official dep package.In addition to project executables on
+# PATH, this includes an exclusive, project- local GOPATH which enables many
+# tools like gocode and oracle to "just work".
+#
+# http://getgb.io/
+# https://golang.github.io/dep/
+#
+# use `layout golang` in your project .envrcs.
+
+layout_golang() {
+  export GOPATH="$PWD/vendor:$PWD"
+  PATH_add "$PWD/vendor/bin"
+  PATH_add bin
+}
+
+# --------------- helper.sh support for nvm -------------------
+# see: https://github.com/steve-ross/direnv-helpers
+# source ~/.config/direnv/helpers.sh

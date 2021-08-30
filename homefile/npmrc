@@ -1,2 +1,4 @@
 home=https://npm.taobao.org
 registry=https://registry.npm.taobao.org/
+#registry=http://192.168.8.15:4873/
+//192.168.8.15:4873/:_authToken="7z6ABtJSu2LZVqQ/TCZT9M7vMBXTUHEnvYQQxiEIoqg="

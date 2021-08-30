@@ -92,7 +92,8 @@ eval "$(direnv hook zsh)"
 export PLAY_HOME=$HOME/opt/play-1.4.4
 #export PLAY_HOME=$HOME/opt/play-1.3.2
 
-export ANDROID_HOME=$HOME/opt/android-sdk-macosx
+#export ANDROID_HOME=$HOME/opt/android-sdk-macosx
+export ANDROID_HOME=$HOME/opt/android-sdk
 # please run "brew install coreutils" first.
 # brew --prefix coreutils => /usr/local/opt/coreutils
 
@@ -105,7 +106,7 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
 export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
 #export PATH=/usr/local/opt/python@2/libexec/bin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
-export PATH=/usr/local/mysql/bin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
+export PATH=$HOME/opt/go/bin:$GRADLE_HOME/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
@@ -140,7 +141,7 @@ RUBY_VERSION=2.6.6
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PATH=$PATH:$HOME/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook
+export PATH=$PATH:$HOME/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook:/opt/homebrew/opt/mysql-client@5.7/bin
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -156,7 +157,7 @@ function load_nvm() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   #export PATH=$HOME/.nvm/versions/node/v10.15.3/bin:$PATH
 }
-lazy_load load_nvm nvm node npm yarn sshync
+lazy_load load_nvm nvm node pnpm npm yarn sshync npx pnpx cnpm cz
 
 # lazyload rvm
 function load_rvm() {
@@ -171,3 +172,25 @@ lazy_load load_rvm rvm ruby rails rake rdoc ri bundle bi bu cheat gem
 #  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 #}
 #lazy_load load_sdkman sdk java javac gradle scala sbt mvn
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+
+# __conda_setup="$('/Users/tanglq/opt/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+# else
+#     if [ -f "/Users/tanglq/opt/miniforge3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/tanglq/opt/miniforge3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/tanglq/opt/miniforge3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+
+# <<< conda initialize <<<
+
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true

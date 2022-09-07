@@ -1,0 +1,205 @@
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmode
+set number
+" set relativenumber
+set scrolloff=3
+set history=100000
+
+set ideajoin
+set ideastatusicon=gray
+
+set idearefactormode=keep
+" set idearefactormode=visual
+
+" NERDTree support: https://github.com/JetBrains/ideavim/blob/master/doc/NERDTree-support.md
+set NERDTree
+
+Plug 'kana/vim-textobj-entire'
+
+" 启用 surround 插件来模拟 surround https://einverne.github.io/post/2015/01/vim-plugin-vim-surround.html
+" Commands: ys, cs, ds, S
+set surround
+
+" Emulates vim-multiple-cursors
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
+
+" 输入法自动切换 IdeaVimExtension
+set keep-english-in-normal-and-restore-in-insert
+
+" Emulates commentary.vim
+" Commands: gcc, gc + motion, v_gc
+set commentary
+
+" EasyMotion 操作
+" ,,f<> / ,,s<> / ,,t<>
+set easymotion
+
+" Vim 默认<Leader> 是 \ ， 这里把 \ 映射为 , (反向行内查找)，并使用 , 作为 <Leader>
+nnoremap \ ,
+let mapleader = ","
+
+" 关闭当前高亮搜索结果
+nnoremap <esc> :noh<CR><esc>
+
+" Jetbrains/IDE 常用操作
+nnoremap <Leader>go :<C-u>action RecentProjectListGroup<CR>
+
+" go to somewhere (g in normal mode for goto somewhere)
+nnoremap <Leader>ga :<C-u>action GotoAction<CR>
+nnoremap <Leader>gb :<C-u>action JumpToLastChange<CR>
+nnoremap <Leader>gc :<C-u>action GotoClass<CR>
+vnoremap <leader>gc :action GotoClass<CR>
+nnoremap <Leader>gd :<C-u>action GotoDeclaration<CR>
+nnoremap <Leader>gs :<C-u>action GotoSuperMethod<CR>
+nnoremap <Leader>gi :<C-u>action GotoImplementation<CR>
+nnoremap <Leader>gf :<C-u>action GotoFile<CR>
+nnoremap <Leader>gm :<C-u>action GotoSymbol<CR>
+nnoremap <Leader>gu :<C-u>action ShowUsages<CR>
+nnoremap <Leader>gt :<C-u>action GotoTest<CR>
+nnoremap <Leader>gp :<C-u>action FindInPath<CR>
+nnoremap <Leader>gr :<C-u>action RecentFiles<CR>
+nnoremap <Leader>gh :<C-u>action Back<CR>
+nnoremap <Leader>gl :<C-u>action Forward<CR>
+
+" The default C-o and C-i behaviours have certain inconsistencies with
+" Vim which I can't quite pinpoint.
+" I'm using the default IntelliJ behaviours instead.
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+
+nnoremap <Leader>1 :action SelectInProjectView<CR>
+
+" nnoremap g, :<C-u>action Diff.PrevChange<CR>
+" nnoremap g. :<C-u>action Diff.NextChange<CR>
+
+nnoremap <Leader>fp :action ShowFilePath<CR>
+
+" project search
+nnoremap <Leader>ps :action SearchEverywhere<CR>
+nnoremap <Leader>pf :action GotoFile<CR>
+
+nnoremap fu :action FindUsages<CR>
+nnoremap fs :action FileStructurePopup<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
+nnoremap <Leader>fs :action FileStructurePopup<CR>
+
+nnoremap <Leader>ta :action Annotate<cr>
+nnoremap <Leader>tb :action ToggleLineBreakpoint<cr>
+nnoremap <Leader>tp :action ActivateProjectToolWindow<CR>
+
+" 书签管理
+nnoremap <Leader>tl :action ShowBookmarks<cr>
+nnoremap <Leader>tt :action ToggleBookmark<cr>
+
+nnoremap <Leader>t0 :action ToggleBookmark0<cr>
+nnoremap <Leader>t1 :action ToggleBookmark1<cr>
+nnoremap <Leader>t2 :action ToggleBookmark2<cr>
+nnoremap <Leader>t3 :action ToggleBookmark3<cr>
+nnoremap <Leader>t4 :action ToggleBookmark4<cr>
+nnoremap <Leader>t5 :action ToggleBookmark5<cr>
+nnoremap <Leader>t6 :action ToggleBookmark6<cr>
+nnoremap <Leader>t7 :action ToggleBookmark7<cr>
+nnoremap <Leader>t8 :action ToggleBookmark8<cr>
+nnoremap <Leader>t9 :action ToggleBookmark9<cr>
+
+nnoremap <Leader>g0 :action GotoBookmark0<cr>
+nnoremap <Leader>g1 :action GotoBookmark1<cr>
+nnoremap <Leader>g2 :action GotoBookmark2<cr>
+nnoremap <Leader>g3 :action GotoBookmark3<cr>
+nnoremap <Leader>g4 :action GotoBookmark4<cr>
+nnoremap <Leader>g5 :action GotoBookmark5<cr>
+nnoremap <Leader>g6 :action GotoBookmark6<cr>
+nnoremap <Leader>g7 :action GotoBookmark7<cr>
+nnoremap <Leader>g8 :action GotoBookmark8<cr>
+nnoremap <Leader>g9 :action GotoBookmark9<cr>
+
+
+
+" Quit normal mode
+nnoremap <Leader>q  :q<CR>
+nnoremap <Leader>Q  :qa!<CR>
+
+" Move half page faster
+nnoremap <Leader>d  <C-d>
+nnoremap <Leader>u  <C-u>
+
+" Redo
+nnoremap U <C-r>
+
+" Yank to the end of line
+nnoremap Y y$
+
+" Window operation
+nnoremap <Leader>ww <C-W>w
+nnoremap <Leader>wd <C-W>c
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wl <C-W>l
+nnoremap <Leader>ws <C-W>s
+nnoremap <Leader>w- <C-W>s
+nnoremap <Leader>wv <C-W>v
+nnoremap <Leader>w\| <C-W>v
+
+nnoremap <Leader>wm :action MoveEditorToOppositeTabGroup<CR>
+
+nnoremap <Leader>;; :action CommentByLineComment<CR>
+nnoremap <Leader>cv :action ChangeView<CR>
+
+" Insert mode shortcut
+inoremap <C-h> <Left>
+inoremap <C-b> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+
+" Code Action
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+
+nnoremap <Leader>oi :action OptimizeImports<CR>
+nnoremap <Leader>ic :action InspectCode<CR>
+
+nnoremap <Leader>su :action ShowUsages<CR>
+
+nnoremap <Leader>mv :action ActivateMavenProjectsToolWindow<CR>
+
+nnoremap <Leader>pm :action ShowPopupMenu<CR>
+
+" Run / Debug
+nnoremap <Leader>rc :action RunToCursor<CR>
+nnoremap <Leader>rC :action ChooseRunConfiguration<CR>
+nnoremap <Leader>rr :action Rerun<CR>
+nnoremap <Leader>rn :action Run<CR>
+nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
+
+nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>br :action ViewBreakpoints<CR>
+nnoremap <Leader>si :action StepInto<CR>
+
+"修改所有的关联名字
+nnoremap <Leader>re :action RenameElement<CR>
+
+"修改当前文件的文件名
+nnoremap <Leader>rf :action RenameFile<CR>
+
+nnoremap <Leader>se :action SearchEverywhere<CR>
+nnoremap <Leader>tc :action CloseActiveTab<CR>
+
+" 生成方法  (使用快捷键 空格+cc)
+nnoremap <Leader>cc :action Generate<CR>
+
+" 快速修正
+nnoremap <Leader>f. :action GotoNextError<CR>
+nnoremap <Leader>c. :action ShowIntentionActions<CR>

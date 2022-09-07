@@ -1,4 +1,4 @@
-export http_proxy=http://192.168.8.12:45678
-export https_proxy=http://192.168.8.12:45678
+export http_proxy=http://192.168.8.254:7890
+export https_proxy=http://192.168.8.254:7890
 #export http_proxy=http://192.168.8.12:41091
 #export https_proxy=http://192.168.8.12:41091

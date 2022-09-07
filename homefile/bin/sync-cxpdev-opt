@@ -1,0 +1,3 @@
+#!/bin/zsh
+source ~/.zshrc
+sshync . cxpdev02:/opt

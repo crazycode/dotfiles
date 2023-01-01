@@ -97,7 +97,7 @@ export PLAY_HOME=$HOME/opt/play-1.4.4
 #export PLAY_HOME=$HOME/opt/play-1.3.2
 
 #export ANDROID_HOME=$HOME/opt/android-sdk-macosx
-export ANDROID_HOME=$HOME/opt/android-sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
 # please run "brew install coreutils" first.
 # brew --prefix coreutils => /usr/local/opt/coreutils
 

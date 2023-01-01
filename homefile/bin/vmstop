@@ -1,0 +1,2 @@
+#!/bin/bash
+vmrun stop "/Users/tanglq/Virtual Machines.localized/Debian11Arm.vmwarevm" nogui

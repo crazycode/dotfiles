@@ -1,0 +1,4 @@
+#!/bin/bash
+# 添加书籍：打开NAS上的CalibreLibrary目录，添加/删除书籍
+# 同步书籍：XMan移动硬盘上的CalibreLibrary只用于移动场景上阅读/同步kindle
+rsync -av --delete /Volumes/calibre/CalibreLibrary /Volumes/XMAN/calibre/

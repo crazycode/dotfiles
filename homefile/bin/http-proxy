@@ -1,4 +1,4 @@
 # export http_proxy=http://127.0,0.1:45678
 # export https_proxy=http://127.0.0.1:45678
-export http_proxy=http://127.0.0.1:41091
-export https_proxy=http://127.0.0.1:41091
+export http_proxy=http://127.0.0.1:33053
+export https_proxy=http://127.0.0.1:33053

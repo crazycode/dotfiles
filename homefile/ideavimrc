@@ -28,6 +28,13 @@ set surround
 set multiple-cursors
 
 " 输入法自动切换 IdeaVimExtension
+" 编辑器中normal模式下输入输入下面的指令以启用自动切换输入法功能：
+" :set keep-english-in-normal 开启输入法自动切换功能
+" :set keep-english-in-normal-and-restore-in-insert 回到insert模式时恢复输入法
+" :set nokeep-english-in-normal-and-restore-in-insert 保留输入法自动切换功能，但是回到insert模式不恢复输入法
+" :set nokeep-english-in-normal 关闭输入法自动切换功能
+" 也可以通过将`set keep-english-in-normal[-and-restore-in-insert]`加入到`~/.ideavimrc`文件中并重启IDE来启用插件功能。
+" 使用smart input插件代替
 set keep-english-in-normal-and-restore-in-insert
 
 " Emulates commentary.vim
@@ -39,8 +46,8 @@ set commentary
 set easymotion
 
 " Vim 默认<Leader> 是 \ ， 这里把 \ 映射为 , (反向行内查找)，并使用 , 作为 <Leader>
-nnoremap \ ,
-let mapleader = ","
+nnoremap \ <space>
+let mapleader = " "
 
 " 关闭当前高亮搜索结果
 nnoremap <esc> :noh<CR><esc>
@@ -84,10 +91,11 @@ nnoremap <Leader>fp :action ShowFilePath<CR>
 nnoremap <Leader>ps :action SearchEverywhere<CR>
 nnoremap <Leader>pf :action GotoFile<CR>
 
-nnoremap fu :action FindUsages<CR>
-nnoremap fs :action FileStructurePopup<CR>
+" nnoremap fu :action FindUsages<CR>
+" nnoremap fs :action FileStructurePopup<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 nnoremap <Leader>fs :action FileStructurePopup<CR>
+nnoremap <Leader>ls :action FileStructurePopup<CR>
 
 nnoremap <Leader>ta :action Annotate<cr>
 nnoremap <Leader>tb :action ToggleLineBreakpoint<cr>

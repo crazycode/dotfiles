@@ -79,7 +79,7 @@ function lazy_load_clean() {
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant autojump brew capistrano coffee gem git git-flow github gradle golang gnu-utils history-substring-search kubectl mvn pip pipenv rails rake ruby rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
+plugins=(ant autojump brew capistrano coffee direnv gem git git-flow github gradle golang gnu-utils history-substring-search kubectl mvn pip pipenv rails rake ruby rsync screen tmux tmuxinator sbt svn scala bundler virtualenv safe-paste vagrant docker safe-paste docker-machine-use sdk)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,16 +115,17 @@ else
 fi
 
 
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export GROOVY_HOME=$HOMEBREW_HOME/opt/groovy/libexec
 #export GRADLE_HOME=$HOME/opt/gradle-2.13
-export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
+#export GRADLE_HOME=/usr/local/Cellar/gradle/3.4/libexec
 #export PATH=/usr/local/opt/python@2/libexec/bin:$HOME/opt/go/bin:$GRADLE_HOME/bin:$HOMEBREW_HOME/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/sbin:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin
-export PATH=$HOMEBREW_HOME/opt/coreutils/libexec/gnubin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$HOME/.cabal/bin:/usr/local/opt/go/libexec/bin:~/.local/bin
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH=$HOMEBREW_HOME/opt/coreutils/libexec/gnubin:$HOME/opt/go/bin:$GRADLE_HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$HOME/bin:$PLAY_HOME:$HOME/.cabal/bin:/opt/homebrew/opt/go/libexec/bin:~/.local/bin
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
 # use JAVA_HOME
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 #
 #export JAVA_OPTS="-server -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=256m"
 export JAVA_OPTS="-server -Xmx1024m"
@@ -144,24 +145,20 @@ export GOPATH=$HOME/opt/go
 #}
 #lazy_load load_docker docker docker-compose
 
-#PATH=/usr/local/mysql/bin:$JAVA_HOME/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
-#PATH=/usr/local/mysql/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin # Add RVM to PATH for scripting
-
-# 设置当前ruby版本，用于Gemfile选择当前版本
-RUBY_VERSION=2.6.6
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 
-export PATH=$PATH:$HOME/Library/Python/3.7/bin:~/opt/sonar-scanner/bin:/usr/local/texlive/2019basic/bin/x86_64-darwin:~/opt/PanBook:$HOMEBREW_HOME/opt/mysql-client@5.7/bin:/usr/local/texlive/2021basic/bin/universal-darwin
+export PATH=$PATH:~/opt/sonar-scanner/bin:/usr/local/texlive/2023basic/bin/universal-darwin:~/opt/PanBook:$HOMEBREW_HOME/opt/mysql-client@5.7/bin
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc
 
-# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles/api"
+
 
 # Lazyload NVM
 export NVM_DIR="$HOME/.nvm"
@@ -172,6 +169,7 @@ function load_nvm() {
 }
 lazy_load load_nvm nvm node pnpm npm sshync npx pnpx cnpm cz yarn tcb cloudbase
 
+# 不再使用rvm, 使用 direnv & ruby-install
 # lazyload rvm
 #function load_rvm() {
 #   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -209,4 +207,17 @@ lazy_load load_nvm nvm node pnpm npm sshync npx pnpx cnpm cz yarn tcb cloudbase
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # eval "$(atuin init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/tanglq/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

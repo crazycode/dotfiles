@@ -1,0 +1,4 @@
+#!/bin/zsh
+source ~/.zshrc
+#sshync . um690-frp:/opt/apps
+sshync . um690:/opt/apps

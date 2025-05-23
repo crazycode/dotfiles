@@ -1,0 +1,52 @@
+#!/bin/bash
+# upload-to-qiniu.sh
+
+# 七牛云存储空间名称
+BUCKET_NAME="hyshifiles"
+# 七牛云外链域名
+DOMAIN="http://qh.cdn6.cn"
+
+# 检查参数（文件路径）是否提供
+if [ $# -ne 1 ]; then
+    echo "使用方式: $0 <file_path>"
+    exit 1
+fi
+
+# 获取文件路径
+FILE_PATH=$1
+
+# 检查文件是否存在
+if [ ! -f "$FILE_PATH" ]; then
+    echo "错误: 文件不存在。"
+    exit 1
+fi
+
+# 文件名
+FILENAME=$(basename "$FILE_PATH")
+
+# 生成按照 yyyy/mm/dd/hhMM 格式的路径
+DATE_PATH=$(date "+%Y/%m/%d/%H%M")
+# 在七牛云中的文件路径，包括临时目录tmp和按日期分类的文件夹
+KEY="tmp/${DATE_PATH}/${FILENAME}"
+
+# 上传文件到七牛云存储
+qshell rput "$BUCKET_NAME" "$KEY" "$FILE_PATH"
+if [ $? -ne 0 ]; then
+    echo "上传失败。"
+    exit 1
+fi
+
+# 生成外链链接
+DOWNLOAD_URL="${DOMAIN}/${KEY}"
+echo "文件已成功上传。"
+echo
+echo "下载链接: ${DOWNLOAD_URL}"
+
+# 检测是否为Mac系统并复制链接到剪贴板
+if [ "$(uname)" == "Darwin" ]; then
+    echo "$DOWNLOAD_URL" | pbcopy
+
+    echo
+    echo "下载链接已复制到剪贴板。"
+fi
+

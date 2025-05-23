@@ -43,7 +43,12 @@ set commentary
 
 " EasyMotion 操作
 " ,,f<> / ,,s<> / ,,t<>
+" see https://github.com/AlexPl292/IdeaVim-EasyMotion
 set easymotion
+
+" vimrc文件中:
+onoremap am :normal! ma[{V]}mb`a<CR>
+vnoremap am :<C-u>normal! [{V]}<CR>
 
 " Vim 默认<Leader> 是 \ ， 这里把 \ 映射为 , (反向行内查找)，并使用 , 作为 <Leader>
 nnoremap \ <space>

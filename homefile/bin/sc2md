@@ -1,0 +1,3 @@
+#!/bin/bash
+export PYTHONPATH="~/main/sourcecode2markdown:$PYTHONPATH"
+~/main/sourcecode2markdown/.venv/bin/sourcecode2markdown

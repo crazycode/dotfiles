@@ -157,7 +157,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 
-export PATH=$PATH:~/opt/sonar-scanner/bin:/usr/local/texlive/2025basic/bin/universal-darwin:~/opt/PanBook:$HOMEBREW_HOME/opt/mysql-client@5.7/bin:/opt/homebrew/opt/postgresql@15/bin
+export PATH=$PATH:~/opt/sonar-scanner/bin:/usr/local/texlive/2025basic/bin/universal-darwin:~/opt/PanBook:$HOMEBREW_HOME/opt/mysql-client@5.7/bin:/opt/homebrew/opt/postgresql@17/bin
 
 #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

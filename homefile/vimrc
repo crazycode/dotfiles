@@ -55,3 +55,7 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 :nmap <C-N><C-N> :set invnumber<CR> " 开关行号显示
 
 " 配置去解决排版的问题，比如字符编码和缩 进等问题。
+
+
+set guifont=Consolas:h16      " 英文字体
+set guifontwide=PingFang_SC:h16
